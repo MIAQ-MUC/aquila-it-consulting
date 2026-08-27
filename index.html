@@ -236,20 +236,7 @@
   }
   .back-to-top:hover { background: var(--blue-dark); transform: translateY(-3px); }
 
-  /* TYPEWRITER */
-  .typewriter-cursor {
-    display: inline-block;
-    width: 3px;
-    height: 1em;
-    background: var(--blue);
-    margin-left: 2px;
-    vertical-align: middle;
-    animation: blink 0.7s infinite;
-  }
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
+
 
 </style>
 </head>
@@ -287,7 +274,7 @@
 
 <section class="hero">
   <div class="hero-badge">Microsoft 365 · SharePoint · Power Automate · IT-Beratung</div>
-  <h1><span id="typewriter-text"></span><span class="typewriter-cursor" id="typewriter-cursor"></span></h1>
+  <h1>Ihre <span>IT-Herausforderungen</span> – gelöst. Schnell, direkt, unkompliziert.</h1>
   <p>Von SharePoint-Intranets über Power Automate bis zur Hardwareberatung und Netzwerkaufbau – ich helfe Ihnen pragmatisch weiter.</p>
   <div class="hero-btns">
     <a href="#kontakt" class="btn-primary">Kostenloses Erstgespräch</a>
@@ -547,49 +534,6 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 });
 
 
-
-// TYPEWRITER
-(function() {
-  const texts = [
-    "Ihre IT-Herausforderungen – gelöst.",
-    "SharePoint. Power Automate. Einfach gemacht.",
-    "Schnell. Direkt. Unkompliziert."
-  ];
-  let textIndex = 0;
-  let charIndex = 0;
-  let deleting = false;
-  const el = document.getElementById('typewriter-text');
-  const cursor = document.getElementById('typewriter-cursor');
-
-  function type() {
-    if (!el) return;
-    const current = texts[textIndex];
-    if (!deleting) {
-      el.innerHTML = current.substring(0, charIndex + 1)
-        .replace('IT-Herausforderungen', '<span style="color:var(--blue)">IT-Herausforderungen</span>')
-        .replace('SharePoint', '<span style="color:var(--blue)">SharePoint</span>')
-        .replace('Schnell', '<span style="color:var(--blue)">Schnell</span>');
-      charIndex++;
-      if (charIndex === current.length) {
-        deleting = true;
-        setTimeout(type, 2000);
-        return;
-      }
-    } else {
-      el.innerHTML = current.substring(0, charIndex - 1)
-        .replace('IT-Herausforderungen', '<span style="color:var(--blue)">IT-Herausforderungen</span>')
-        .replace('SharePoint', '<span style="color:var(--blue)">SharePoint</span>')
-        .replace('Schnell', '<span style="color:var(--blue)">Schnell</span>');
-      charIndex--;
-      if (charIndex === 0) {
-        deleting = false;
-        textIndex = (textIndex + 1) % texts.length;
-      }
-    }
-    setTimeout(type, deleting ? 40 : 70);
-  }
-  setTimeout(type, 800);
-})();
 
 // SCROLL ANIMATIONS
 const fadeEls = document.querySelectorAll('.fade-in');
