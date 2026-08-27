@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aquila IT Consulting – SharePoint, Power Automate & IT-Beratung</title>
+<meta name="description" content="Professionelle IT-Beratung: SharePoint, Power Automate, Hardware, Netzwerk und mehr. Michael Aquila – Aquila IT Consulting, Eching bei München.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --blue: #1E5AA0;
+    --blue-mid: #2E80D0;
+    --blue-light: #EBF3FC;
+    --blue-dark: #143D6E;
+    --gold: #F0A500;
+    --text: #1A1A2E;
+    --text-muted: #5A6478;
+    --bg: #F8FAFD;
+    --white: #ffffff;
+    --border: #DDE6F0;
+    --radius: 12px;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 16px; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); z-index: 100; padding: 0 2rem; }
+  .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo svg { width: 36px; height: 36px; }
+  .nav-logo-text { font-size: 15px; font-weight: 600; color: var(--blue); letter-spacing: 0.3px; }
+  .nav-logo-sub { font-size: 10px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav ul a { text-decoration: none; color: var(--text-muted); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  nav ul a:hover { color: var(--blue); }
+  .nav-cta { background: var(--blue); color: white !important; padding: 8px 20px; border-radius: 8px; font-size: 14px !important; transition: background 0.2s !important; }
+  .nav-cta:hover { background: var(--blue-dark) !important; color: white !important; }
+
+  /* HERO */
+  .hero { padding: 130px 2rem 90px; background: linear-gradient(160deg, #F0F6FF 0%, #F8FAFD 60%); text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(46,128,208,0.08) 0%, transparent 70%); pointer-events: none; }
+  .hero-badge { display: inline-block; background: var(--blue-light); color: var(--blue); font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 1.5rem; }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; color: var(--text); line-height: 1.2; max-width: 780px; margin: 0 auto 1.25rem; }
+  .hero h1 span { color: var(--blue); }
+  .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 560px; margin: 0 auto 2.5rem; }
+  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--blue); color: white; padding: 14px 32px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px; transition: background 0.2s, transform 0.15s; display: inline-block; }
+  .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); }
+  .btn-outline { border: 2px solid var(--blue); color: var(--blue); padding: 12px 32px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px; transition: all 0.2s; display: inline-block; }
+  .btn-outline:hover { background: var(--blue-light); }
+  .hero-stats { display: flex; justify-content: center; gap: 3rem; margin-top: 4rem; flex-wrap: wrap; }
+  .hero-stat { text-align: center; }
+  .hero-stat strong { display: block; font-size: 1.8rem; font-weight: 700; color: var(--blue); }
+  .hero-stat span { font-size: 13px; color: var(--text-muted); }
+
+  /* SECTIONS */
+  section { padding: 90px 2rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; }
+  .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; color: var(--text); margin-bottom: 1rem; }
+  .section-sub { font-size: 1rem; color: var(--text-muted); max-width: 560px; margin-bottom: 3.5rem; }
+
+  /* LEISTUNGEN */
+  #leistungen { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .service-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
+  .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--blue-mid)); }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(30,90,160,0.1); }
+  .service-icon { width: 48px; height: 48px; background: var(--blue-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+  .service-icon svg { width: 24px; height: 24px; stroke: var(--blue); fill: none; stroke-width: 2; }
+  .service-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--text); }
+  .service-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+  .service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1.25rem; }
+  .tag { font-size: 11px; font-weight: 500; background: var(--blue-light); color: var(--blue); padding: 4px 10px; border-radius: 6px; }
+
+  /* ÜBER MICH */
+  #ueber { background: var(--bg); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 2rem; } }
+  .about-visual { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-mid) 100%); border-radius: 20px; padding: 3rem 2.5rem; color: white; position: relative; overflow: hidden; }
+  .about-visual::after { content: ''; position: absolute; bottom: -40px; right: -40px; width: 180px; height: 180px; background: rgba(255,255,255,0.07); border-radius: 50%; }
+  .about-avatar { width: 72px; height: 72px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 700; margin-bottom: 1.25rem; color: white; }
+  .about-visual h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.25rem; }
+  .about-visual p { font-size: 13px; opacity: 0.8; margin-bottom: 1.5rem; }
+  .about-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .about-chip { background: rgba(255,255,255,0.15); color: white; font-size: 12px; padding: 5px 12px; border-radius: 20px; }
+  .about-text h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; }
+  .about-text p { color: var(--text-muted); margin-bottom: 1rem; font-size: 15px; }
+  .about-points { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 10px; }
+  .about-points li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text-muted); }
+  .about-points li::before { content: ''; width: 20px; height: 20px; min-width: 20px; background: var(--blue-light); border-radius: 50%; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5AA0' stroke-width='3'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E"); background-size: 12px; background-position: center; background-repeat: no-repeat; margin-top: 2px; }
+
+  /* KONTAKT */
+  #kontakt { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-info h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; }
+  .contact-info p { color: var(--text-muted); font-size: 15px; margin-bottom: 2rem; }
+  .contact-items { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-item { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--text-muted); }
+  .contact-item-icon { width: 40px; height: 40px; background: var(--blue-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .contact-item-icon svg { width: 18px; height: 18px; stroke: var(--blue); fill: none; stroke-width: 2; }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 520px) { .form-row { grid-template-columns: 1fr; } }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 13px; font-weight: 500; color: var(--text); }
+  .form-group input, .form-group textarea, .form-group select { padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 14px; color: var(--text); background: var(--bg); outline: none; transition: border-color 0.2s; }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--blue); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-submit { background: var(--blue); color: white; border: none; padding: 13px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; font-family: inherit; cursor: pointer; transition: background 0.2s; align-self: flex-start; }
+  .form-submit:hover { background: var(--blue-dark); }
+
+  /* MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 999; align-items: center; justify-content: center; padding: 1rem; }
+  .modal-overlay.active { display: flex; }
+  .modal { background: white; border-radius: 16px; padding: 2rem; max-width: 720px; width: 100%; max-height: 85vh; overflow-y: auto; position: relative; }
+  .modal h2 { font-size: 1.4rem; font-weight: 700; color: var(--blue); margin-bottom: 1.5rem; }
+  .modal h3 { font-size: 1rem; font-weight: 600; margin: 1.25rem 0 0.5rem; color: var(--text); }
+  .modal p, .modal li { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+  .modal ul { padding-left: 1.25rem; margin-top: 0.5rem; }
+  .modal-close { position: absolute; top: 1rem; right: 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; cursor: pointer; font-size: 13px; color: var(--text-muted); font-family: inherit; }
+  .modal-close:hover { background: var(--border); }
+
+  /* FOOTER */
+  footer { background: var(--text); color: rgba(255,255,255,0.7); padding: 3rem 2rem; text-align: center; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-logo { font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 0.5rem; }
+  .footer-sub { font-size: 13px; margin-bottom: 1.5rem; }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 13px; transition: color 0.2s; cursor: pointer; }
+  .footer-links a:hover { color: white; }
+  .footer-copy { font-size: 12px; opacity: 0.5; }
+
+  @media (max-width: 640px) {
+    nav ul { display: none; }
+    .hero { padding: 110px 1.5rem 70px; }
+    .hero-stats { gap: 1.5rem; }
+    section { padding: 60px 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+  }
+
+  /* DARK MODE */
+  body.dark {
+    --blue: #4A9EE0;
+    --blue-mid: #5BB0F0;
+    --blue-light: #1A2D45;
+    --blue-dark: #2E80D0;
+    --gold: #F0A500;
+    --text: #E8EDF5;
+    --text-muted: #9AAABB;
+    --bg: #0F1923;
+    --white: #162030;
+    --border: #1E3248;
+  }
+  body.dark nav { background: rgba(15,25,35,0.95); }
+  body.dark .hero { background: linear-gradient(160deg, #0F1F35 0%, #0F1923 60%); }
+  body.dark .service-card { background: #162030; }
+  body.dark .about-visual { background: linear-gradient(135deg, #143D6E 0%, #1E5AA0 100%); }
+  body.dark .modal { background: #162030; color: var(--text); }
+  body.dark .form-group input,
+  body.dark .form-group textarea,
+  body.dark .form-group select { background: #1A2B3C; color: var(--text); border-color: var(--border); }
+  body.dark footer { background: #080F17; }
+  body.dark .about-chip { background: rgba(255,255,255,0.12); }
+
+  .dark-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--text-muted);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .dark-toggle:hover { border-color: var(--blue); color: var(--blue); }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <svg viewBox="0 0 84 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="wg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#2E80D0"/>
+            <stop offset="100%" style="stop-color:#1E5AA0"/>
+          </linearGradient>
+        </defs>
+        <polygon points="42,0 0,70 22,55 42,90 62,55 84,70" fill="url(#wg)"/>
+        <polygon points="42,0 32,18 52,18" fill="white"/>
+        <polygon points="42,0 22,55 34,63" fill="rgba(46,128,208,0.5)"/>
+        <polygon points="42,0 62,55 50,63" fill="rgba(46,128,208,0.5)"/>
+        <rect x="28" y="65" width="28" height="4" rx="2" fill="#1E5AA0" opacity="0.4"/>
+      </svg>
+      <div>
+        <div class="nav-logo-text">Aquila IT Consulting</div>
+        <div class="nav-logo-sub">IT-Beratung · Microsoft 365</div>
+      </div>
+    </a>
+    <ul>
+      <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#ueber">Über mich</a></li>
+      <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
+    </ul>
+    <button class="dark-toggle" onclick="toggleDark()" id="darkBtn" title="Dark/Light Mode">🌙</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">Microsoft 365 · SharePoint · Power Automate · IT-Beratung</div>
+  <h1>Ihre <span>IT-Herausforderungen</span> – gelöst. Schnell, direkt, unkompliziert.</h1>
+  <p>Von SharePoint-Intranets über Power Automate bis zur Hardwareberatung und Netzwerkaufbau – ich helfe Ihnen pragmatisch weiter.</p>
+  <div class="hero-btns">
+    <a href="#kontakt" class="btn-primary">Kostenloses Erstgespräch</a>
+    <a href="#leistungen" class="btn-outline">Leistungen ansehen</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><strong>100%</strong><span>Microsoft 365</span></div>
+    <div class="hero-stat"><strong>Remote</strong><span>& flexibel</span></div>
+    <div class="hero-stat"><strong>Raum</strong><span>München</span></div>
+  </div>
+</section>
+
+<section id="leistungen">
+  <div class="section-inner">
+    <div class="section-label">Leistungen</div>
+    <h2 class="section-title">Was ich für Sie umsetze</h2>
+    <p class="section-sub">Von Microsoft 365 bis zur Hardwareberatung – pragmatisch, direkt und ohne unnötigen Overhead.</p>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        </div>
+        <h3>SharePoint Intranet & Seiten</h3>
+        <p>Aufbau und Optimierung von SharePoint-Seiten, Seitenstrukturen und Navigation – sauber, übersichtlich und auf Ihre Prozesse zugeschnitten.</p>
+        <div class="service-tags"><span class="tag">SharePoint Online</span><span class="tag">Microsoft 365</span><span class="tag">Intranet</span></div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Power Automate Workflows</h3>
+        <p>Automatisierung von Genehmigungsprozessen, E-Mail-Benachrichtigungen und wiederkehrenden Aufgaben – weniger Handarbeit, mehr Zeit für das Wesentliche.</p>
+        <div class="service-tags"><span class="tag">Power Automate</span><span class="tag">Flows</span><span class="tag">Automatisierung</span></div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Berechtigungen & Struktur</h3>
+        <p>Saubere Berechtigungskonzepte, Bibliotheksstrukturen und Zugriffsrechte – damit jeder nur sieht was er sehen soll.</p>
+        <div class="service-tags"><span class="tag">Berechtigungen</span><span class="tag">Governance</span><span class="tag">Struktur</span></div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Hardware & Workspace</h3>
+        <p>Beratung bei Hardwarebeschaffung, Aufbau von PC-Towers und Unterstützung beim Einrichten eines produktiven Home-Workspaces – von der Planung bis zur Umsetzung.</p>
+        <div class="service-tags"><span class="tag">Hardware</span><span class="tag">PC-Aufbau</span><span class="tag">Home-Workspace</span></div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+        </div>
+        <h3>Heimnetzwerk & Infrastruktur</h3>
+        <p>Planung und Aufbau von Home-Netzwerken – WLAN-Optimierung, Router-Konfiguration, NAS-Einrichtung und stabile Verbindungen für Home-Office und Gaming.</p>
+        <div class="service-tags"><span class="tag">Netzwerk</span><span class="tag">WLAN</span><span class="tag">Home-Office</span></div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><polygon points="6 3 18 3 22 9 12 22 2 9"/><line x1="2" y1="9" x2="22" y2="9"/><line x1="12" y1="3" x2="12" y2="22"/></svg>
+        </div>
+        <h3>Gaming & Allgemeine IT</h3>
+        <p>Beratung rund um Gaming-Setup, Peripherie und Systemoptimierung. Außerdem allgemeine IT-Unterstützung für Privatpersonen und Selbständige.</p>
+        <div class="service-tags"><span class="tag">Gaming</span><span class="tag">IT-Support</span><span class="tag">Beratung</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="ueber">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-visual">
+        <img src="data:image/jpeg;base64,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" alt="Michael Aquila" style="width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,0.4);margin-bottom:1.25rem;display:block;">
+        <h3>Michael Aquila</h3>
+        <p>Aquila IT Consulting · Eching bei München</p>
+        <div class="about-chips">
+          <span class="about-chip">SharePoint</span>
+          <span class="about-chip">Power Automate</span>
+          <span class="about-chip">Microsoft 365</span>
+          <span class="about-chip">Hardware</span>
+          <span class="about-chip">Netzwerk</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="section-label">Über mich</div>
+        <h2 class="section-title">Erfahrung aus der Praxis</h2>
+        <p>Ich bin Michael Aquila – IT-Berater mit Fokus auf Microsoft 365 und breitem IT-Know-how. Aus meiner täglichen Arbeit im technischen Einkauf kenne ich die Herausforderungen, mit denen Unternehmen und Privatpersonen konfrontiert sind.</p>
+        <p>Mein Ansatz: pragmatisch, direkt und ohne unnötigen Beratungsaufwand. Sie bekommen eine fertige Lösung, keine Foliedecks.</p>
+        <ul class="about-points">
+          <li>Mehrjährige Praxis mit SharePoint Online und Power Automate</li>
+          <li>Breites IT-Wissen: Hardware, Netzwerk, Gaming & mehr</li>
+          <li>Flexibel, remote und ohne lange Vorlaufzeiten</li>
+          <li>Transparente Abrechnung nach Stunden</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="section-inner">
+    <div class="section-label">Kontakt</div>
+    <h2 class="section-title">Projekt anfragen</h2>
+    <p class="section-sub">Kurze Beschreibung genügt – ich melde mich innerhalb von 24 Stunden.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>So erreichen Sie mich</h3>
+        <p>Erstes Gespräch kostenlos und unverbindlich. Remote-Projekte bevorzugt, Raum München möglich.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div><div style="font-weight:500;color:#1A1A2E">E-Mail</div><a href="mailto:m.aquila@aquila-it-consulting.de" style="color:var(--blue);font-weight:500">m.aquila@aquila-it-consulting.de</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div><div style="font-weight:500;color:#1A1A2E">Standort</div>Eching bei München, Bayern</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <div><div style="font-weight:500;color:#1A1A2E">Rechtsform</div>Kleinunternehmer § 19 UStG</div>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Vorname *</label>
+            <input type="text" id="f-vorname" placeholder="Max" required>
+          </div>
+          <div class="form-group">
+            <label>Nachname *</label>
+            <input type="text" id="f-nachname" placeholder="Mustermann" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Ihre E-Mail *</label>
+          <input type="email" id="f-email" placeholder="max@firma.de" required>
+        </div>
+        <div class="form-group">
+          <label>Thema</label>
+          <select id="f-thema">
+            <option>SharePoint Intranet</option>
+            <option>Power Automate Workflow</option>
+            <option>Berechtigungen & Struktur</option>
+            <option>Hardware & Workspace</option>
+            <option>Heimnetzwerk</option>
+            <option>Gaming & Allgemeine IT</option>
+            <option>Sonstiges</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Kurze Beschreibung</label>
+          <textarea id="f-nachricht" placeholder="Was möchten Sie umsetzen? Welche Herausforderung haben Sie?"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Anfrage senden →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Aquila IT Consulting</div>
+    <div class="footer-sub">Michael Aquila · Eching bei München · Kleinunternehmer § 19 UStG</div>
+    <div class="footer-links">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#ueber">Über mich</a>
+      <a href="#kontakt">Kontakt</a>
+      <a onclick="document.getElementById('modal-impressum').classList.add('active')">Impressum</a>
+      <a onclick="document.getElementById('modal-dsgvo').classList.add('active')">Datenschutz</a>
+    </div>
+    <div class="footer-copy">© 2026 Michael Aquila · Aquila IT Consulting · Alle Rechte vorbehalten</div>
+  </div>
+</footer>
+
+<!-- IMPRESSUM MODAL -->
+<div class="modal-overlay" id="modal-impressum">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('modal-impressum').classList.remove('active')">✕ Schließen</button>
+    <h2>Impressum</h2>
+    <h3>Angaben gemäß § 5 TMG</h3>
+    <p>Michael Aquila<br>Aquila IT Consulting<br>Günzenhausener Straße 8<br>85386 Eching</p>
+    <h3>Kontakt</h3>
+    <p>E-Mail: m.aquila@aquila-it-consulting.de<br>Website: aquila-it-consulting.de</p>
+    <h3>Umsatzsteuer</h3>
+    <p>Gemäß § 19 UStG (Kleinunternehmerregelung) wird keine Umsatzsteuer berechnet und ausgewiesen.</p>
+    <h3>Steuernummer</h3>
+    <p>Steuernummer: (bitte eintragen)</p>
+    <h3>Berufsbezeichnung</h3>
+    <p>IT-Berater (freiberuflich/gewerblich), Aquila IT Consulting, eingetragen beim Gewerbeamt Eching.</p>
+    <h3>Haftungsausschluss</h3>
+    <p>Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehme ich keine Gewähr. Als Diensteanbieter bin ich für eigene Inhalte nach den allgemeinen Gesetzen verantwortlich.</p>
+    <h3>Urheberrecht</h3>
+    <p>Die durch den Seitenbetreiber erstellten Inhalte und Werke auf dieser Website unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung.</p>
+  </div>
+</div>
+
+<!-- DSGVO MODAL -->
+<div class="modal-overlay" id="modal-dsgvo">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('modal-dsgvo').classList.remove('active')">✕ Schließen</button>
+    <h2>Datenschutzerklärung</h2>
+    <h3>1. Verantwortlicher</h3>
+    <p>Michael Aquila, Aquila IT Consulting, Günzenhausener Straße 8, 85386 Eching</p>
+    <h3>2. Erhebung und Speicherung personenbezogener Daten</h3>
+    <p>Diese Website erhebt keine personenbezogenen Daten automatisch. Das Kontaktformular öffnet Ihr E-Mail-Programm und überträgt keine Daten an Server dieser Website.</p>
+    <h3>3. Kontaktformular</h3>
+    <p>Wenn Sie das Kontaktformular nutzen, wird Ihr E-Mail-Programm geöffnet und eine E-Mail vorbereitet. Die Daten werden direkt per E-Mail übermittelt und nicht auf Servern dieser Website gespeichert.</p>
+    <h3>4. Hosting</h3>
+    <p>Diese Website wird über GitHub Pages (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA) gehostet. GitHub kann beim Aufruf der Website automatisch Server-Logfiles erfassen. Weitere Informationen finden Sie in der <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" style="color:var(--blue)">Datenschutzerklärung von GitHub</a>.</p>
+    <h3>5. Cookies</h3>
+    <p>Diese Website verwendet keine Cookies und kein Tracking.</p>
+    <h3>6. Ihre Rechte</h3>
+    <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten sowie das Recht auf Datenübertragbarkeit. Wenden Sie sich hierzu per E-Mail an mich.</p>
+    <h3>7. Aktualität</h3>
+    <p>Stand: August 2026</p>
+  </div>
+</div>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const vorname = document.getElementById('f-vorname').value;
+  const nachname = document.getElementById('f-nachname').value;
+  const email = document.getElementById('f-email').value;
+  const thema = document.getElementById('f-thema').value;
+  const nachricht = document.getElementById('f-nachricht').value;
+
+  if (!vorname || !nachname || !email) {
+    alert('Bitte füllen Sie alle Pflichtfelder aus.');
+    return;
+  }
+
+  const subject = encodeURIComponent('Anfrage: ' + thema + ' – ' + vorname + ' ' + nachname);
+  const body = encodeURIComponent(
+    'Name: ' + vorname + ' ' + nachname + '\n' +
+    'E-Mail: ' + email + '\n' +
+    'Thema: ' + thema + '\n\n' +
+    'Nachricht:\n' + nachricht
+  );
+
+  window.location.href = 'mailto:m.aquila@aquila-it-consulting.de?subject=' + subject + '&body=' + body;
+});
+
+
+function toggleDark() {
+  document.body.classList.toggle('dark');
+  const isDark = document.body.classList.contains('dark');
+  localStorage.setItem('darkMode', isDark);
+  document.getElementById('darkBtn').textContent = isDark ? '☀️' : '🌙';
+}
+
+// Default: Dark Mode ON
+(function() {
+  const saved = localStorage.getItem('darkMode');
+  const isDark = saved === null ? true : saved === 'true';
+  if (isDark) document.body.classList.add('dark');
+  document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.getElementById('darkBtn');
+    if (btn) btn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+  });
+})();
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('active');
+  });
+});
+</script>
+</body>
+</html>
