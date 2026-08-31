@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SharePoint &amp; Power Automate Beratung | Aquila IT Consulting</title>
+<meta name="description" content="Pragmatische Beratung und Umsetzung für SharePoint, Power Automate und Microsoft 365 – remote in Deutschland und vor Ort im Raum München.">
+<link rel="canonical" href="https://aquila-it-consulting.de/">
+<meta name="robots" content="index, follow">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0C141D">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="SharePoint &amp; Power Automate Beratung | Aquila IT Consulting">
+<meta property="og:description" content="Pragmatische Beratung und Umsetzung für SharePoint, Power Automate und Microsoft 365 – remote in Deutschland und vor Ort im Raum München.">
+<meta property="og:url" content="https://aquila-it-consulting.de/">
+<meta property="og:image" content="https://aquila-it-consulting.de/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Aquila IT Consulting">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<link rel="stylesheet" href="assets/css/styles.css">
+<script>
+/* Setzt eine zuvor gewählte Ansicht vor dem ersten Rendern, damit kein
+   Farbwechsel sichtbar wird. Standard ist die dunkle Ansicht. */
+(function(){try{var t=localStorage.getItem("aic-theme");if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();
+</script>
+<script src="assets/js/main.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Aquila IT Consulting",
+  "url": "https://aquila-it-consulting.de/",
+  "email": "m.aquila@aquila-it-consulting.de",
+  "image": "https://aquila-it-consulting.de/assets/img/og-image.png",
+  "founder": { "@type": "Person", "name": "Michael Aquila" },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Günzenhausener Straße 8",
+    "postalCode": "85386",
+    "addressLocality": "Eching",
+    "addressRegion": "Bayern",
+    "addressCountry": "DE"
+  },
+  "areaServed": [
+    { "@type": "Country", "name": "Deutschland" },
+    { "@type": "City", "name": "München" }
+  ],
+  "knowsAbout": [
+    "SharePoint Online",
+    "Microsoft 365",
+    "Power Automate",
+    "Prozessautomatisierung",
+    "Berechtigungskonzepte"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Leistungen",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SharePoint und Microsoft 365" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Power Automate und Prozessautomatisierung" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Berechtigungen und Dokumentenstrukturen" } }
+    ]
+  }
+}
+</script>
+</head>
+
+<body>
+<a class="skip-link" href="#inhalt">Zum Inhalt</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="./" aria-label="Aquila IT Consulting – Startseite">
+      <picture>
+        <source srcset="assets/img/logo-mark-104.webp 1x, assets/img/logo-mark-208.webp 2x" type="image/webp">
+        <img class="brand__mark brand__mark--light" src="assets/img/logo-mark-104.png"
+             srcset="assets/img/logo-mark-104.png 1x, assets/img/logo-mark-208.png 2x"
+             width="104" height="74" alt="" decoding="async">
+      </picture>
+      <picture>
+        <source srcset="assets/img/logo-mark-dark-104.webp 1x, assets/img/logo-mark-dark-208.webp 2x" type="image/webp">
+        <img class="brand__mark brand__mark--dark" src="assets/img/logo-mark-dark-104.png"
+             srcset="assets/img/logo-mark-dark-104.png 1x, assets/img/logo-mark-dark-208.png 2x"
+             width="104" height="74" alt="" decoding="async">
+      </picture>
+      <span class="brand__name">Aquila IT Consulting</span>
+    </a>
+
+    <div class="header-actions">
+      <nav class="nav" id="primary-navigation" aria-label="Hauptnavigation">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#leistungen">Leistungen</a></li>
+          <li><a class="nav__link" href="#anwendungsfaelle">Anwendungsfälle</a></li>
+          <li><a class="nav__link" href="#ablauf">Ablauf</a></li>
+          <li><a class="nav__link" href="#ueber-mich">Über mich</a></li>
+          <li><a class="nav__link" href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Zur hellen Ansicht wechseln">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+
+      <button class="nav-toggle" type="button" data-nav-toggle
+              aria-expanded="false" aria-controls="primary-navigation" aria-label="Menü öffnen">
+        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="inhalt">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-titel">
+    <div class="container">
+      <span class="hero__eyebrow">Microsoft 365 · SharePoint · Power Automate</span>
+      <h1 class="hero__title" id="hero-titel">Digitale Abläufe, die Ihrem Unternehmen wirklich Zeit sparen.</h1>
+      <p class="hero__lead">Ich entwickle übersichtliche SharePoint-Lösungen und Power-Automate-Workflows für kleine und mittlere Unternehmen – pragmatisch, persönlich und ohne unnötigen Beratungsaufwand.</p>
+
+      <div class="btn-row">
+        <a class="btn btn--primary" href="#kontakt">Kostenloses Erstgespräch</a>
+        <a class="btn btn--secondary" href="#leistungen">Leistungen ansehen</a>
+      </div>
+
+      <ul class="hero__facts">
+        <li class="hero__fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg>
+          Fokus auf Microsoft 365
+        </li>
+        <li class="hero__fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg>
+          Remote in ganz Deutschland
+        </li>
+        <li class="hero__fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Vor Ort im Raum München
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- LEISTUNGEN -->
+  <section class="section section--alt" id="leistungen" aria-labelledby="leistungen-titel">
+    <div class="container">
+      <span class="section__eyebrow">Leistungen</span>
+      <h2 id="leistungen-titel">Was ich für Ihr Unternehmen umsetze</h2>
+      <p class="section__intro">Praktische Microsoft-365- und IT-Lösungen, die Ihre Abläufe vereinfachen, Informationen übersichtlich zusammenführen und manuelle Arbeit reduzieren.</p>
+
+      <div class="grid grid--3">
+        <article class="card">
+          <span class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </span>
+          <h3 class="card__title">SharePoint und Microsoft 365</h3>
+          <p class="card__text">Aufbau und Optimierung von SharePoint-Seiten, Intranets, Projektbereichen, Listen und Dokumentenbibliotheken – klar strukturiert und auf Ihre Arbeitsabläufe zugeschnitten.</p>
+          <ul class="tags">
+            <li>SharePoint Online</li><li>Microsoft 365</li><li>Intranet</li><li>Projektseiten</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M4 6h9a4 4 0 0 1 0 8H8a4 4 0 0 0 0 8h12"/><circle cx="4" cy="6" r="2"/><circle cx="20" cy="22" r="2"/></svg>
+          </span>
+          <h3 class="card__title">Power Automate und Prozessautomatisierung</h3>
+          <p class="card__text">Automatisierung von Genehmigungen, E-Mail-Benachrichtigungen, Erinnerungen und wiederkehrenden Aufgaben – für weniger Handarbeit und nachvollziehbare Prozesse.</p>
+          <ul class="tags">
+            <li>Power Automate</li><li>Workflows</li><li>Genehmigungen</li><li>Automatisierung</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v2"/></svg>
+          </span>
+          <h3 class="card__title">Berechtigungen und Dokumentenstrukturen</h3>
+          <p class="card__text">Übersichtliche Bibliotheken, klare Zuständigkeiten und abgestufte Zugriffsrechte – damit Informationen sicher abgelegt und schnell gefunden werden.</p>
+          <ul class="tags">
+            <li>Berechtigungen</li><li>Dokumentenmanagement</li><li>Governance</li><li>Struktur</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ANWENDUNGSFÄLLE -->
+  <section class="section" id="anwendungsfaelle" aria-labelledby="anwendungsfaelle-titel">
+    <div class="container">
+      <span class="section__eyebrow">Anwendungsfälle</span>
+      <h2 id="anwendungsfaelle-titel">Typische Anwendungsfälle</h2>
+      <p class="section__intro">Beispiele dafür, wie Microsoft 365 und strukturierte IT-Lösungen den Arbeitsalltag vereinfachen können.</p>
+
+      <div class="grid grid--3">
+        <article class="card">
+          <h3 class="card__title">Digitaler Genehmigungsworkflow</h3>
+          <dl class="usecase">
+            <dt>Ausgangssituation</dt>
+            <dd>Freigaben werden per E-Mail eingeholt und müssen manuell nachverfolgt werden.</dd>
+            <dt>Mögliche Lösung</dt>
+            <dd>Ein zentraler Prozess mit Microsoft Forms, SharePoint und Power Automate übernimmt Benachrichtigungen, Erinnerungen, Statusverfolgung und Dokumentation.</dd>
+          </dl>
+        </article>
+
+        <article class="card">
+          <h3 class="card__title">Zentrales Anfrage- und Aufgabentracking</h3>
+          <dl class="usecase">
+            <dt>Ausgangssituation</dt>
+            <dd>Anfragen, Termine und Zuständigkeiten werden in mehreren Excel-Dateien und E-Mail-Postfächern verwaltet.</dd>
+            <dt>Mögliche Lösung</dt>
+            <dd>Eine zentrale SharePoint-Liste bündelt Vorgänge, Verantwortliche, Fristen, Status und zugehörige Dokumente.</dd>
+          </dl>
+        </article>
+
+        <article class="card">
+          <h3 class="card__title">Strukturierte Dokumentenablage</h3>
+          <dl class="usecase">
+            <dt>Ausgangssituation</dt>
+            <dd>Dokumente liegen in gewachsenen Ordnerstrukturen und Zugriffsrechte sind nicht eindeutig geregelt.</dd>
+            <dt>Mögliche Lösung</dt>
+            <dd>Aufbau übersichtlicher SharePoint-Bibliotheken mit Metadaten, eindeutigen Verantwortlichkeiten und abgestuften Berechtigungen.</dd>
+          </dl>
+        </article>
+      </div>
+
+      <div class="notice">
+        <p>Bei den dargestellten Punkten handelt es sich um Beispiele möglicher Umsetzungen, nicht um Kundenreferenzen. Der konkrete Umfang wird im Erstgespräch besprochen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABLAUF -->
+  <section class="section section--alt" id="ablauf" aria-labelledby="ablauf-titel">
+    <div class="container">
+      <span class="section__eyebrow">Ablauf</span>
+      <h2 id="ablauf-titel">So läuft die Zusammenarbeit ab</h2>
+      <p class="section__intro">Von der ersten Anfrage bis zur Übergabe – transparent und in klar abgegrenzten Schritten.</p>
+
+      <ol class="steps">
+        <li>
+          <h3>Kostenloses Erstgespräch</h3>
+          <p>Wir besprechen kurz Ihre aktuelle Situation, das gewünschte Ergebnis und die wichtigsten Rahmenbedingungen.</p>
+        </li>
+        <li>
+          <h3>Analyse und Aufwandsschätzung</h3>
+          <p>Sie erhalten eine transparente Einschätzung des Leistungsumfangs, des benötigten Aufwands und der nächsten Schritte.</p>
+        </li>
+        <li>
+          <h3>Umsetzung und Abstimmung</h3>
+          <p>Die Lösung wird umgesetzt, getestet und gemeinsam mit Ihnen abgestimmt.</p>
+        </li>
+        <li>
+          <h3>Übergabe und Dokumentation</h3>
+          <p>Sie erhalten eine verständliche Einweisung sowie die für den späteren Betrieb erforderliche Dokumentation.</p>
+        </li>
+      </ol>
+
+      <p style="margin-top: 2rem;">
+        <a class="btn btn--primary" href="#kontakt">Projekt unverbindlich besprechen</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ÜBER MICH -->
+  <section class="section" id="ueber-mich" aria-labelledby="ueber-mich-titel">
+    <div class="container">
+      <span class="section__eyebrow">Über mich</span>
+      <h2 id="ueber-mich-titel">IT-Know-how trifft auf praktisches Prozessverständnis</h2>
+
+      <div class="about">
+        <div class="about__card">
+          <picture>
+            <source srcset="assets/img/michael-aquila-240.webp" type="image/webp">
+            <img class="about__photo" src="assets/img/michael-aquila-240.jpg"
+                 width="120" height="120" loading="lazy" decoding="async"
+                 alt="Porträt von Michael Aquila">
+          </picture>
+          <h3 class="about__name">Michael Aquila</h3>
+          <p class="about__role">Aquila IT Consulting · Eching bei München</p>
+        </div>
+
+        <div>
+          <p>Ich bin Michael Aquila – IT-Berater mit Fokus auf Microsoft 365, SharePoint und Power Automate. Aus meiner beruflichen Praxis im technischen Einkauf und Projektgeschäft kenne ich die Herausforderungen, die entstehen, wenn Informationen, Freigaben und Zuständigkeiten über E-Mails, Excel-Dateien und unterschiedliche Ablagen verteilt sind.</p>
+          <p>Ich entwickle pragmatische Lösungen, die sich in bestehende Arbeitsabläufe integrieren, verständlich bleiben und im Arbeitsalltag tatsächlich genutzt werden.</p>
+
+          <blockquote class="about__quote">
+            <p>Sie bekommen eine fertige Lösung – keine Folienpakete.</p>
+          </blockquote>
+
+          <ul class="checklist">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5"/></svg>
+              Mehrjährige praktische Erfahrung mit SharePoint Online und Power Automate
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5"/></svg>
+              Prozessverständnis aus technischem Einkauf und Projektgeschäft
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5"/></svg>
+              Direkte Zusammenarbeit ohne wechselnde Ansprechpartner
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5"/></svg>
+              Remote deutschlandweit und vor Ort im Raum München
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5"/></svg>
+              Transparente Abrechnung nach vereinbartem Aufwand
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVATKUNDEN -->
+  <section class="section section--alt" id="privatkunden" aria-labelledby="privatkunden-titel">
+    <div class="container">
+      <div class="private">
+        <h2 id="privatkunden-titel">IT-Unterstützung für Privatkunden</h2>
+        <p class="private__intro">Auf Wunsch unterstütze ich auch Privatpersonen bei der Einrichtung und Optimierung ihrer privaten IT-Umgebung im Raum München.</p>
+
+        <div class="private__grid">
+          <div>
+            <h3>Heimnetzwerk und Infrastruktur</h3>
+            <ul>
+              <li>WLAN-Optimierung</li>
+              <li>Router-Konfiguration</li>
+              <li>NAS-Einrichtung</li>
+              <li>Home-Office-Netzwerke</li>
+              <li>Fehlersuche bei Verbindungsproblemen</li>
+            </ul>
+          </div>
+          <div>
+            <h3>PC, Workspace und Gaming</h3>
+            <ul>
+              <li>Hardwareauswahl</li>
+              <li>PC-Konfiguration und PC-Aufbau</li>
+              <li>Home-Workspace</li>
+              <li>Gaming-Setup</li>
+              <li>Systemoptimierung</li>
+            </ul>
+          </div>
+        </div>
+
+        <a class="btn btn--ghost" href="#kontakt" data-preset-topic="Privatkunden-IT">Private IT-Anfrage stellen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section class="section" id="kontakt" aria-labelledby="kontakt-titel">
+    <div class="container">
+      <span class="section__eyebrow">Kontakt</span>
+      <h2 id="kontakt-titel">Lassen Sie uns über Ihr Projekt sprechen</h2>
+      <p class="section__intro">Eine kurze Beschreibung Ihrer Aufgabenstellung genügt. Ich prüfe Ihr Anliegen und melde mich in der Regel innerhalb von 24 Stunden zurück.</p>
+
+      <div class="contact">
+        <div>
+          <ul class="contact__details">
+            <li>
+              <span class="contact__label">E-Mail</span>
+              <span class="contact__value"><a href="mailto:m.aquila@aquila-it-consulting.de">m.aquila@aquila-it-consulting.de</a></span>
+            </li>
+            <li>
+              <span class="contact__label">Standort</span>
+              <span class="contact__value">Eching bei München</span>
+            </li>
+            <li>
+              <span class="contact__label">Einsatzgebiet</span>
+              <span class="contact__value">Remote deutschlandweit und vor Ort im Raum München</span>
+            </li>
+          </ul>
+
+          <button class="btn btn--ghost" type="button" data-copy-email>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg>
+            E-Mail-Adresse kopieren
+          </button>
+          <span class="copy-status" id="copy-status" role="status" aria-live="polite"></span>
+        </div>
+
+        <form class="form" id="kontaktformular">
+          <div class="form__row">
+            <div class="field">
+              <label for="vorname">Vorname</label>
+              <input type="text" id="vorname" name="vorname" autocomplete="given-name" required aria-describedby="vorname-error">
+              <span class="field-error" id="vorname-error"></span>
+            </div>
+            <div class="field">
+              <label for="nachname">Nachname</label>
+              <input type="text" id="nachname" name="nachname" autocomplete="family-name" required aria-describedby="nachname-error">
+              <span class="field-error" id="nachname-error"></span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="unternehmen">Unternehmen <span class="optional">(optional)</span></label>
+            <input type="text" id="unternehmen" name="unternehmen" autocomplete="organization">
+          </div>
+
+          <div class="field">
+            <label for="email">E-Mail</label>
+            <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="email-error">
+            <span class="field-error" id="email-error"></span>
+          </div>
+
+          <div class="field">
+            <label for="thema">Thema</label>
+            <select id="thema" name="thema">
+              <option>SharePoint und Microsoft 365</option>
+              <option>Power Automate</option>
+              <option>Berechtigungen und Dokumentenstruktur</option>
+              <option>IT-Beschaffung und Hardware</option>
+              <option>Privatkunden-IT</option>
+              <option>Sonstiges</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="nachricht">Kurze Beschreibung</label>
+            <textarea id="nachricht" name="nachricht"></textarea>
+          </div>
+
+          <p class="form__hint">Beim Anklicken wird Ihr E-Mail-Programm mit einer vorbereiteten Nachricht geöffnet. Es werden keine Formulardaten über diese Website übertragen.</p>
+
+          <div>
+            <button class="btn btn--primary" type="submit">E-Mail-Anfrage vorbereiten</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <strong>Aquila IT Consulting</strong>
+        <p>Michael Aquila · Eching bei München</p>
+      </div>
+
+      <nav class="site-footer__nav" aria-label="Fußzeilennavigation">
+        <ul>
+          <li><a href="#leistungen">Leistungen</a></li>
+          <li><a href="#anwendungsfaelle">Anwendungsfälle</a></li>
+          <li><a href="#ablauf">Ablauf</a></li>
+          <li><a href="#ueber-mich">Über mich</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="site-footer__legal">
+      <p>© 2026 Michael Aquila · Aquila IT Consulting</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
